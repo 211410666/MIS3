@@ -56,10 +56,14 @@ const Rank = () => {
     }
 
     // 成功加载数据后，展示实际的数据
+    if (sortedRanks.length === 0) {
+        return <Title as='h1'>Loading...</Title>; // 如果 sortedRanks 还没有数据，可以根据需要处理
+    }
+
     return (
         <SectionCenter>
             <Title as='h1'>Rank</Title>
-            <RankTable ranks={ranks} />
+            <RankTable ranks={sortedRanks} /> {/* 确保传入 sortedRanks */}
             <BackHome />
         </SectionCenter>
     );
