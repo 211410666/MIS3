@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 const sizes = {
   small: css`
-    font-size: ${(props) => (props.titleLength > 20 ? "1.7rem" : "2.2rem")};
+    font-size: ${(props) => (props.titleLength > 14 ? "1.7rem" : "2.2rem")};
     padding: 1.5rem 0.8rem;
     text-transform: uppercase;
     font-weight: 600;
