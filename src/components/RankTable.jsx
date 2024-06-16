@@ -5,17 +5,20 @@ import styled from 'styled-components';
 const Table = styled.table`
     width: 80%;
     border-collapse: collapse;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    
 
 
     th, td {
         padding: 1rem;
         text-align: left;
         border: 1px solid #434588;
+        
     }
 
     th {
         background-color: #c4c1c1;
+        text-align: center;
     }
 
     tr:nth-child(even) {
@@ -23,6 +26,9 @@ const Table = styled.table`
     }
     tr:nth-child(odd) {
         background-color: #f9f9f9;
+    }
+    td:nth-child(odd){
+        text-align: center;
     }
 `
 

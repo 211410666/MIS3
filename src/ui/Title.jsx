@@ -5,7 +5,7 @@ color: #252c90;
     ${(props) =>
     props.as === 'h1' &&
     css`
-      font-size: 7rem;
+      font-size: 4rem;
       font-weight: 550;
     `}
 

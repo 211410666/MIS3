@@ -18,12 +18,13 @@ const SingleExam = ({ currentTopic,onSelectNext }) => {
     const handleClick = (sel,ans,topic) => {
         onSelectNext(sel,ans,topic);
     }
+    console.log(currentTopic.title.length);
     return (
         <SingleE>
             <Title as='h5'>{currentTopic.title}</Title>
             <OptionList>
                 {currentTopic.options.map((option, i) => (
-                    <Button key={i} size="small" onClick={()=>handleClick(i+1,currentTopic.answer,currentTopic)}>{option}</Button>
+                    <Button key={i} size="small" titleLength={option.length} onClick={()=>handleClick(i+1,currentTopic.answer,currentTopic)}>{option}</Button>
                 ))}
             </OptionList>
         </SingleE>
