@@ -1,7 +1,7 @@
 import supabase, { supabaseUrl } from './supabase';
 
 export async function getScores() {
-    const { data: ranks, error } = await supabase.from('rank').select('*').limit(15);;
+    const { data: ranks, error } = await supabase.from('rank').select('*');
 
     if (error) {
         console.error(error);
