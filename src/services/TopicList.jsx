@@ -930,7 +930,7 @@ const Topic_list = [
     {
         id:nanoid() ,
         title: '基於技術典範的基礎，所形成的日常解決問題的形式是指？',
-        answer: 3,
+        answer: 1,
         options:['檔案共享']
     },
     {
