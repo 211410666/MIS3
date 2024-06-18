@@ -1,19 +1,15 @@
 import React from 'react';
-import SectionCenter from '../ui/SectionCenter';
 import styled from 'styled-components';
 
 const Table = styled.table`
     width: 80%;
     border-collapse: collapse;
     font-size: 1.5rem;
-    
-
 
     th, td {
         padding: 1rem;
         text-align: left;
         border: 1px solid #434588;
-        
     }
 
     th {
@@ -33,28 +29,28 @@ const Table = styled.table`
 `
 
 const RankTable = ({ ranks }) => {
-    return (
-            <Table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Score</th>
-                        <th>Time (s)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {ranks && ranks.map((rank, index) => (
-                        <tr key={rank.id}>
-                            <td>{index + 1}</td>
-                            <td>{rank.name}</td>
-                            <td>{rank.score}</td>
-                            <td>{Math.floor(rank.time / 60)}m : {rank.time % 60}s</td>
+    // 只取前10笔数据
+    const topRanks = ranks ? ranks.slice(0, 10) : [];
 
-                        </tr>
-                    ))}
-                </tbody>
-            </Table>
+    return (
+        <Table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {topRanks.map((rank, index) => (
+                    <tr key={rank.id}>
+                        <td>{index + 1}</td>
+                        <td>{rank.name}</td>
+                        <td>{rank.score - rank.time * 2}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </Table>
     );
 };
 

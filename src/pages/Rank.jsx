@@ -1,16 +1,12 @@
-import { useQueryClient, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import SectionCenter from '../ui/SectionCenter';
 import Title from '../ui/Title';
 import BackHome from '../components/BackHome';
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getScores } from "../services/apiScores";
-import { TbPentagonNumber1 } from "react-icons/tb";
 import RankTable from "../components/RankTable";
 
 const Rank = () => {
-    const navigate = useNavigate();
-    const queryClient = useQueryClient();
     const [sortedRanks, setSortedRanks] = useState([]);
 
     // 使用 useQuery 钩子获取数据
@@ -25,16 +21,15 @@ const Rank = () => {
             // 使用深拷贝对 ranks 进行操作，避免直接改变原始数据
             const sorted = [...ranks];
             sorted.sort((a, b) => {
-                // 按 score 降序排列
-                if (b.score !== a.score) {
-                    return b.score - a.score;
-                }
-                // 如果 score 相同，按 time 升序排列
-                return a.time - b.time;
+                // 按 (score - time * 2) 降序排列
+                const scoreA = a.score - a.time * 2;
+                const scoreB = b.score - b.time * 2;
+                return scoreB - scoreA;
             });
             setSortedRanks(sorted);
         }
     }, [ranks]);
+    
 
     // 如果数据加载中或者出现错误，展示不同的 UI
     if (isLoading) {
