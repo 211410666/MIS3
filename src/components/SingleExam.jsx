@@ -36,21 +36,15 @@ const SingleExam = ({ currentTopic, onSelectNext }) => {
                 originalIndex: index+1
             }));
             const shuffled = shuffleArray([...options]);
-            console.log('shu',shuffled);
-            console.log('ans',currentTopic.answer);
             const newAnswerIndex = options.findIndex(
                 (option) => option.originalIndex === currentTopic.answer
             );
-            console.log('newAnswerIndex',newAnswerIndex+1);
             setShuffledOptions(shuffled);
             setAnswerIndex(newAnswerIndex+1);
         }
     }, [currentTopic]);
 
     const handleClick = (selectedOptionIndex, correctAnswerIndex, topic) => {
-        console.log('selectedOptionIndex',selectedOptionIndex);
-        console.log('correctAnswerIndex',correctAnswerIndex);
-        console.log('topic',topic);
         onSelectNext(selectedOptionIndex, correctAnswerIndex, topic);
     };
 

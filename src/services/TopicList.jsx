@@ -563,6 +563,12 @@ const Topic_list = [
     },
     {
         id:nanoid() ,
+        title: '資訊倫理的形成影響了企業運用MIS系統的效率和效益，其影響主要可分成？',
+        answer: 1,
+        options:['資訊本身議題']
+    },
+    {
+        id:nanoid() ,
         title: '下列何者不是網路安全的技術',
         answer: 4,
         options:['網路程式供','作業系統','應用程式','全部皆非']
@@ -920,6 +926,12 @@ const Topic_list = [
         title: '整合性的管理資訊系統重點為何?',
         answer: 3,
         options:['整合企業夥伴的資訊系統','結合企業內不同資訊系統','全部皆是','服務導向架構']
+    },
+    {
+        id:nanoid() ,
+        title: '基於技術典範的基礎，所形成的日常解決問題的形式是指？',
+        answer: 3,
+        options:['檔案共享']
     },
     {
         id:nanoid() ,
