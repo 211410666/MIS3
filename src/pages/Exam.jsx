@@ -6,6 +6,7 @@ import Timer from "../components/Timer";
 import SingleExam from "../components/SingleExam";
 import { useNavigate } from "react-router-dom";
 import { insertScore } from "../services/apiScores";
+import toast from "react-hot-toast";
 
 const Exam = () => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Exam = () => {
     const [score, setScore] = useState(0);
     const [bonus, setBonus] = useState(0);
     const [seconds, setSeconds] = useState(0);
-    const [isSubmitted, setIsSubmitted] = useState(false); // 新增状态
+    const [isSubmitted, setIsSubmitted] = useState(false); 
 
     const selectRandomTopic = () => {
         if (topicList.length > 0) {
@@ -36,7 +37,7 @@ const Exam = () => {
     useEffect(() => {
         if (topicList.length === 0 && currentTopic === null && !isSubmitted) {
             const userName = localStorage.getItem('userName');
-            setIsSubmitted(true); // 标记为已提交
+            setIsSubmitted(true); 
             if (wrongList.length > 0) {
                 localStorage.setItem('WrongList', JSON.stringify(wrongList));
                 insertScore(userName, score, seconds, 1).then(() => {
@@ -55,13 +56,17 @@ const Exam = () => {
         let newWrongList = wrongList;
 
         if (sel === ans && newBonus > 0) {
+            toast.success('答對囉!');
             newBonus += 1;
         } else if (sel === ans && newBonus <= 0) {
+            toast.success('答對囉!');
             newBonus = 1;
         } else if (sel !== ans && newBonus > 0) {
+            toast.error(`答錯囉!答案是"${topic.options[ans-1]}"`);
             newBonus = -1;
             newWrongList = [...wrongList, topic];
         } else {
+            toast.error(`答錯囉!答案是"${topic.options[ans-1]}"`);
             newBonus--;
             newWrongList = [...wrongList, topic];
         }

@@ -61,10 +61,10 @@ function App_66() {
           containerStyle={{ margin: '8px' }}
           toastOptions={{
             success: {
-              duration: 3000,
+              duration: 1000,
             },
             error: {
-              duration: 4000,
+              duration: 2000,
             },
             styles: {
               fontSize: '16px',
